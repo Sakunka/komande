@@ -1,0 +1,227 @@
+DOS nije case sensitive! Za razliku od Linuxa Spisak i SPISAK su ista imena u DOS-u.
+\
+.\
+..\
+% oznaka za korijeni (root ) dir.
+% oznaka za tekući dir.
+% oznaka za roditeljski dir.
+\Temp\A
+.\A
+..\A
+% dir. A se nalazi u Temp-u, a Temp u root-u (apsolutna putanja)
+% dir. A se nalazi u tekućem dir. (relativna putanja/adresiranje)
+% dir. A se nalazi u roditeljskom dir. (relativna putanja/adresiranje)
+cd - služi za kretanje kroz direktorijume. Sintaksa: cd putanja do direktorijuma
+cd \
+cd ..\A
+cd \Temp
+% pređi u root dir.
+% pređi u dir. A koji se nalazi u roditelj. dir.
+% pređi u dir. \Temp
+cd .\A
+cd A
+cd
+% pređi u dir. A koji se nalazi u tekućem dir.
+% ovaj zapis je ravnopravan prethodnom
+% štampa na ekran putanju do tekućeg dir.
+mkdir - kreiranje dir. Sintaksa:
+mkdir putanja do novog dir.
+Može se ravnopravno koristiti i
+komanda md
+Primjeri:
+mkdir \A
+mkdir \B\C
+mkdir \B\C \A\D
+Objašnjenja:
+% u root dir. se kreira dir. A
+% root dir. se kreira dir. B (ukoliko već ne postoji) i u njemu C
+% u root dir. se kreiraju dir. B i A i u njima dir. C i D
+rmdir - brisanje direktorijuma. Sintaksa:
+rmdir putanja do dir. [/S]
+Ako dir. nije prazan mora se koristiti
+opcija /S
+Primjeri:
+rmdir \Temp\A
+rmdir \Temp\B /S
+rd \Temp\B /S
+Objašnjenja:
+% brisanje praznog dir. A
+% brisanje dir. B koji nije prazan
+% može se korstiti i kraća verzija komande - rd
+dir - daje informacije o sadržaju dir. (u vidu
+spiska). Sintaksa:
+dir putanja do direktorijuma [/opcije]
+Opcije:
+/S - prikazuje sadržaj i poddirektorijuma
+/W - prikazuje spisak u više kolona
+/P - prikazuje spisak stranicu po stranicu
+/O:N - sortiranje spiska po imenu (/O:S - po
+veličini, /O:E po ekstenziji, /O:D - po datumu)
+/A:H - prikazuje samo hidden fajlove (/A:R samo
+read-only fajlove, /A:S samo sistemske fajlove,
+/A:D samo direktorijume, /A:A sve fajlove)
+Primjeri:
+dir \
+dir \Temp /W /P
+dir "\Program Files"
+dir O:N
+dir \Temp /A:H
+dir \ /O:S /A:R
+Objašnjenja:
+% prikazuje sadržaj root dir.
+% prikazuje sadrža dir. \Temp u više kolona,
+stranicu po stranicu
+% prikazuje sadržaj dir. \Program Files
+% prikazuje sadržaj tekućeg dir. sortiran po
+imenu
+% prikazuje spisak svih skrivenih fajlova iz dir.
+\Temp
+% prikazije spisak svih read-only fajlova iz root
+dir. sortitan po veličini
+tree - prikazuje stablo direktorijuma. Sintaksa:
+tree putanja do dir. [/F]
+Opcija /F se koristi ako želimo da priakžemo i
+falove
+Primjeri:
+tree \Temp
+tree \Temp /F
+Objašnjenja:
+% Prikazuje stablo dir. koji se nalaze u Temp-u
+% Prikazuje stablo dir. koji se nalaze u Temp-u
+uključujući i fajlove
+copy con - služi za kreiranje fajlova.
+Sintaksa:
+copy con > putanja do fajla (Enter)
+tekst fajla (Enter)
+ctrl+Z
+Primjer:
+copy con > \Temp\test.txt
+Ime Prezime
+ctrl+Z
+Objašnjenje:
+% u dir. \Temp kreirali smo fajl test.txt. Fajl sadrži tekst
+"Ime Prezime"
+% Kod ove, kao i kod ostalih komandi gdje se navodi
+putanja, može se koristiti i aspolutno i relativno adres.!
+type -služi za prikazivanje sadržaja fajla. Sintaksa:
+type putanja do fajla
+Primjer:
+type \Temp\test.txt
+Objašnjenje:
+% prikazuje se sadržaj fajla \Temp\test.txt
+del - služi za brisanje fajlova. Sintaksa:
+del putanja fo fajla
+Primjer:
+del \Temp\test.txt
+Objašnjenje:
+% brisanje fajla \Temp\test.txt
+ren - preimenovanje fajlova i dir. Sintaksa:
+ren putanja do fajla ili dir. novo ime
+Primjeri:
+ren \Temp\test.txt test.doc
+ren \Temp\A B
+Objašnjenja:
+% preimenovanje fajla test.txt u test.doc
+% preimenovanje dir. A u B
+Fajlovi i dir. imaju 4 vrsta atributa: R -
+read-only, H - hidden, S - system, A -
+archive
+attrib - za dodjeljivanje, oduzimanje i
+prikazivanje atributa fajlova i dir. Sintaksa:
+attrib [+- atribut] putanja do fajla ili dir
+Ako želimo da prikažemo atribute nekog
+fajla ili dir. sintaksa je sljedeća:
+attrib putanja do fajla ili dir.
+Opcija /S se koristi ukoliko želimo da
+dodjelimo atribute i fajlovima unutar dir.
+Primjeri:
+attrib +H \Temp\test.txt
+attrib +R +S \Temp\test.txt
+attrib -H \Temp\test.txt
+attrib +H -R \Temp\test.txt
+attrib +A \Temp
+attrib -R \Temp /S
+attrib \Temp\test.txt
+attrib \Temp
+Objašnjenja:
+% dodjeljujmo atribut H fajlu test.txt
+% dodjeljujmo atribute R i S fajlu test.txt
+% oduzimamo atribut H fajlu test.txt
+% dodjeljujemo atribut H i oduzimamo
+atribut R fajlu test.txt
+% dodjeljujemo atribut A dir. Temp
+% oduzimamo atribut R dir. Temp i svim
+fajlovima unutar njega
+% prikazujemo atribute fajla test.txt
+% prikazujemo atribute dir. \Temp
+time /t - štampa na ekran trenutno vrijeme
+date /t - štampa na ekran tekući datum
+cls - briše sve sa ekrana
+ver - štampa na ekran verziju OS-a
+Joker * zamjenjuje više karaktera! Uglavnom se koristi kod svih komandi kod kojih se navodi putanja.
+Primjeri:
+dir \Temp\*a
+attrib \Temp\*a*
+del *.txt
+ren a* b*
+% prikazuje spisak fajlova iz Temp-a koji se zvršavaju slovom a
+% prikazuje atribute svih fajlova iz Temp-a koji sadrže slovo a
+% briše sve fajlove iz tekućeg dir. čija je ekstenzija .txt
+% svim fajlovima iz tekućeg dir. čije ime počinje slovom a mijenja prvo slovo u imenu slovom b
+move - premještanje fajlova i dir. Sintaksa: move putanja do fajla/dir. koji se premješta putanja do odredišta/[novo ime]
+Primjeri:
+move \A \Temp
+move \A \Temp\B
+move \test.txt \Temp
+move \test.txt \Temp\proba.m
+move \a* \Temp
+Objašnjenja:
+% premještanje dir. \A u dir. \Temp pod istim imenom
+% premještanje dir. \A u dir. \Temp pod novim imenom B
+% premještanje fajla. \test.txt u dir. \Temp pod istim imenom
+% premještanje fajla \test.txt u dir. \Temp pod novim imenom proba.m
+% premještanje svih fajlova iz root dir. koji počinju slovom a u \Temp (ali ne i i dir.!)
+copy - kopiranje fajlova. Sintaksa: copy putanja do fajla koji se kopira putanja do odredišta/[novo ime]
+Primjeri:
+copy \test.txt \Temp
+copy \test.txt \Temp\proba.m
+copy \a* \Temp
+Objašnjenja:
+% kopiranje fajla. \test.txt u dir. \Temp pod istim imenom
+% kopiranje fajla \test.txt u dir. \Temp pod novim imenom proba.m
+% kopiranje svih fajlova iz root dir. koji počinju slovom a u \Temp
+xcopy - kopiranje fajlova i dir. Sintaksa: xcopy putanja do fajla/dir. koji se kopira putanja do odredišta/[novo ime] [ /opcije]
+Fajlovi se kopiraju na isti način kao sa komandom
+copy. Opcije se koriste za kopiranje direktorijuma:
+/S - kopira se čitav sadržaj dir., sem praznih dir.
+/E - kopira se čitav sadržaj dir. uključujući i prazne dir.
+/T - kopira se samo stablo dir. koji nijesu prazni
+/T /E - kopira se čitavo stablo direktorijuma
+Primjeri:
+xcopy \A \Temp /S
+xcopy \A \Temp /E
+xcopy \A \Temp /T
+xcopy \A \Temp /T /E
+xcopy \a* \Temp \E % kopiranje svih fajlova iz root-a koji
+počinju slovom a u \Temp (* ne radi za dir.)
+Karakter > služi sa redirekciju, tj. za upisivanje
+rezultata neke komande u fajl. Sintaksa:
+komanda > putanja fo fajla
+Ako fajl nije postojao, on će se kreirati, a ako je
+fajl već postojao njegov prethodni sadržaj će biti
+obrisan i biće upisan rezultat specificirane
+komande. Ukoliko želimo da zadržimo
+prethodni sadržaj fajla, potrebno je koristiti >>
+umjesto >.
+Primjeri:
+dir \ O:N > \Temp\lista.txt
+attrib \Temp\a* > atributi.txt
+type \test.txt >> ..\novi.txt
+Objašnjenja:
+% spisak fajlova i dir. iz root-a sortiran
+po imenu upisuje u fajl \Temp\lista.txt
+% atribute svih fajlova iz \Temp-a koji
+počinju slovom a upisije u fajl
+atributi.txt koji se nalazi u tekućem dir.
+% sadržaj fajla \test.txt dopisuje u fajl
+novi.txt koji se nalazi u roditeljskom dir
